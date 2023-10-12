@@ -1,9 +1,10 @@
 const { Schema, model } = require('mongoose');
+const Joi = require('joi');
+
 const {
   handleMongooseError,
   runValidatorsAtUpdate,
 } = require('../models/hooks');
-const Joi = require('joi');
 
 const contactSchema = new Schema(
   {
@@ -24,7 +25,7 @@ const contactSchema = new Schema(
       default: false,
     },
   },
-  { versionKey: false }
+  { versionKey: false, timestamps: true }
 );
 
 const addSchema = Joi.object({
