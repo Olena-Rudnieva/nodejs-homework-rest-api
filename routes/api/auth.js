@@ -1,22 +1,30 @@
 const express = require('express');
-const { validateBody, isEmptyBody } = require('../../middlewares');
+const {
+  validateBody,
+  isEmptyBody,
+  authenticate,
+} = require('../../middlewares');
 const { schemas } = require('../../models/user');
 const ctrl = require('../../controllers/auth');
 
 const router = express.Router();
 
 router.post(
-  '/signup',
+  '/register',
   isEmptyBody,
   validateBody(schemas.userSignupSchema),
-  ctrl.signup
+  ctrl.register
 );
 
 router.post(
-  '/signin',
+  '/login',
   isEmptyBody,
   validateBody(schemas.userSigninSchema),
-  ctrl.signin
+  ctrl.login
 );
+
+router.get('/current', authenticate, ctrl.getCurrent);
+
+router.post('/logout', authenticate, ctrl.logout);
 
 module.exports = router;
