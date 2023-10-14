@@ -60,9 +60,20 @@ const logout = async (req, res) => {
   });
 };
 
+const updateSubscription = async (req, res) => {
+  const { id } = req.params;
+  const result = await User.findByIdAndUpdate(id, req.body);
+  console.log(result);
+  if (!result) {
+    throw HttpError(404, 'Not found');
+  }
+  res.status(200).json(result);
+};
+
 module.exports = {
   register: ctrlWrapper(register),
   login: ctrlWrapper(login),
   getCurrent: ctrlWrapper(getCurrent),
   logout: ctrlWrapper(logout),
+  updateSubscription: ctrlWrapper(updateSubscription),
 };
