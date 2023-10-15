@@ -56,7 +56,13 @@ const userSigninSchema = Joi.object({
 });
 
 const userSubscriptionSchema = Joi.object({
-  subscription: Joi.string().valid('starter', 'pro', 'business').required(),
+  subscription: Joi.string()
+    .valid('starter', 'pro', 'business')
+    .default('starter')
+    .messages({
+      'any.only': 'Invalid subscription type',
+    })
+    .required(),
 });
 
 const schemas = {

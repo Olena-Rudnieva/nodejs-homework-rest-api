@@ -28,8 +28,8 @@ router.get('/current', authenticate, ctrl.getCurrent);
 router.post('/logout', authenticate, ctrl.logout);
 
 router.patch(
-  '/:id',
-  isEmptyBody,
+  '/',
+  authenticate,
   validateBody(schemas.userSubscriptionSchema),
   ctrl.updateSubscription
 );

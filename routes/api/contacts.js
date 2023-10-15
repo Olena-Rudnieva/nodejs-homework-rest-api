@@ -11,8 +11,6 @@ const { schemas } = require('../../models/contact');
 
 const router = express.Router();
 
-// router.use(authenticate);
-
 router.get('/', authenticate, ctrl.listContacts);
 
 router.get('/:id', authenticate, isValidId, ctrl.getContactById);
