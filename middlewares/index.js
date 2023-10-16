@@ -1,11 +1,11 @@
 const isEmptyBody = require('./isEmptyBody');
 const validateBody = require('./validateBody');
 const isValidId = require('./isValidId');
-const isEmptyBodyFavorite = require('./isEmptyBodyFavorite');
+const authenticate = require('./authenticate');
 
 module.exports = {
   isEmptyBody,
   validateBody,
   isValidId,
-  isEmptyBodyFavorite,
+  authenticate,
 };
